@@ -3,8 +3,9 @@
 
 <head>
     <meta charset="utf-8" />
-    <title>Learn JS</title>
+    <title>Xsolla Transactions</title>
     <link href="https://fonts.googleapis.com/css?family=Noto+Sans:400,700&amp;subset=cyrillic" rel="stylesheet">
+    <link rel="icon" href="images/favicon.png" sizes="32x32" type="image/png">
     <link rel="stylesheet" href="css/main.css">
     <link rel="stylesheet" href="css/table.css">
 </head>
@@ -17,24 +18,25 @@
         </header>
 
         <main>
+            <p style="height: 10%; margin: 0">Row of buttons</p>
             <table class="xsolla-table" id="xsollaTable">
-                <tbody>
+                <thead>
                     <tr>
-                        <th>#</th>
+                        <th>#</th> 
                         <th>Country</th>
                         <th>User ID</th>
                         <th>Email</th>
                         <th>Project</th>
                         <th>Virtual item</th>
                         <th>Virtual price</th>
-                        <!-- virtual_currency: amount + name  -->
-                        <th>Payment price</th>
-                        <!-- payment_currency: amount + name  -->
-                        <th>Payment method</th>
+                        <th>Payment price</th> <th>Payment method</th>
                         <th>Transaction ID</th>
                         <th>Date</th>
                         <th>Subscription</th>
                     </tr>
+                </thead>
+                <tbody>
+
                 </tbody>
             </table>
         </main>
@@ -45,12 +47,14 @@
 
         <footer>
             <div class="footer__author">
-                Made by <a href="https://albertmolodec.ru">Albert Abdulmanov</a> for <a href="http://school.xsolla.com">Xsolla Summer School 2018</a>
+                Made by
+                <a href="https://albertmolodec.ru">Albert Abdulmanov</a> for
+                <a href="http://school.xsolla.com">Xsolla Summer School 2018</a>
             </div>
         </footer>
     </div>
     <script type="text/javascript" src="data.json"></script>
-    <script src="scripts.js"></script>
+    <script src="js/scripts.js"></script>
 </body>
 
 </html>

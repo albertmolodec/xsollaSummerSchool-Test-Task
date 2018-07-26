@@ -11,15 +11,6 @@ createTable();
 
 
 
-
-
-
-
-
-
-
-
-
 function createTable() {
     for (var i = 0; i < tableData.length; i++) {
         addRow(xsollaTable, tableData, i);

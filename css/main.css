@@ -22,7 +22,7 @@ header,
 main,
 aside,
 footer {
-    
+    border: 2px dotted orange;
 }
 
 header {
@@ -35,9 +35,7 @@ header {
 main {
     grid-area: main;
     margin-left: 0.5rem;
-
-    display: flex;
-    justify-content: center;
+    padding: 0;    
 }
 
 aside {
@@ -91,7 +89,7 @@ header img {
       grid-template-rows:
         auto /* Header */
         1fr /* Content */
-        minmax(75px, auto) /* Sidebar */
+        1fr /* Sidebar */
         auto; /* Footer */
     }
   
