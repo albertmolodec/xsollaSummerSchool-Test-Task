@@ -43,6 +43,8 @@
     display: inline-block;
 }
 
+
+
 @media (min-width: 768px) {
     .xsolla-table td:before {
         display: none;
@@ -95,6 +97,23 @@
     .xsolla-table th:last-child,
     .xsolla-table td:last-child {
         padding-right: 0;
+    }
+
+    .xsolla-table th {
+        cursor: pointer;
+    }
+  
+    .xsolla-table th:hover {
+        border-bottom: 2px solid #ff005b;
+        color: white;
+    }
+
+    .xsolla-table .sort-down::after {
+        content: ' ↓';
+    }
+
+    .xsolla-table .sort-up::after {
+        content: ' ↑';
     }
 }
 
