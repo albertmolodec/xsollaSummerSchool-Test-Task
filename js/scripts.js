@@ -3,18 +3,37 @@
 var tableData;
 initTableData();
 createTable();
+fillProjects();
+
+filterBtn.addEventListener('click', function () {
+    createTable()
+});
 
 
 
 
 
+function fillProjects() {
+    var uniqueProjects = [];
 
+    for (var i = 0; i < tableData.length; i++) {
+        var projectName = tableData[i].transaction.project.name;
+        if (uniqueProjects.indexOf(projectName) === -1) {
+            uniqueProjects.push(projectName);
+        }
+    }
 
+    uniqueProjects.forEach(projectName => {
+        var li = document.createElement('li');
+        li.textContent = projectName;
+        projectsList.appendChild(li);
+    });
+}
 
 function createTable() {
     for (var i = 0; i < tableData.length; i++) {
         addRow(xsollaTable, tableData, i);
-    }   
+    }
 
     function addRow(idTable, tableData, i) {
         var row = idTable.tBodies[0].insertRow();
@@ -30,10 +49,10 @@ function createTable() {
         addCell(note.payment_details.payment.amount + ' ' + note.payment_details.payment.currency, 'Payment price');
         addCell(note.transaction.payment_method.name, 'Payment method');
         addCell(note.transaction.id, 'Transaction ID');
-        var transactionDate = new Date(note.transaction.transfer_date);    
+        var transactionDate = new Date(note.transaction.transfer_date);
         addCell(transactionDate.toLocaleDateString('ru'), 'Date');
         addCell(note.purchase.subscription.name, 'Subscription');
-    
+
         function addCell(text, dataTh) {
             var td = document.createElement('td');
             td.setAttribute('data-th', dataTh)
@@ -48,13 +67,11 @@ function initTableData(type) {
         // Parse JSON string into object
         tableData = JSON.parse(response);
     });
-    
-    function loadRemoteJSON(callback) {
 
+    function loadRemoteJSON(callback) {
         var xobj = new XMLHttpRequest();
         xobj.overrideMimeType("application/json");
         xobj.open('GET', './data.json', false);
-        // xobj.open('GET', 'https://gist.githubusercontent.com/NikitaBonachev/870f68699f9a7bbf8d5c1434f6c7c3d1/raw/8d45e0f5b60b9dd6a5da1f0c957f3a22031fe102/data.json', true);
         xobj.onreadystatechange = function () {
             if (xobj.readyState == 4 && xobj.status == "200") {
                 callback(xobj.responseText);

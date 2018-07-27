@@ -15,22 +15,39 @@
     <div class="container">
         <header>
             <img src="images/xsolla-logo.svg" width="100" alt="Xsolla transactions">
-            <h1>Xsolla transactions</h1>
+            <h1>Xsolla Transactions</h1>
         </header>
 
         <main>
-            <p style="height: 10%; margin: 0">Row of buttons</p>
+            <div class="table-actions">
+                <div class="projects-list">
+                    <p>Projects:</p>
+                    <ul id="projectsList"></ul>
+                </div>
+                <div class="filter">
+                    <label for="myColumn">Choose a column to filter the table:</label>
+                    <input list="columns_list" id="myColumn">
+                    <datalist id="columns_list">
+                        <option label="Country" value="Country">
+                        <option label="User ID" value="User ID">
+                        <option label="Email" value="Email">
+                    </datalist>
+                    <button type="button" id="filterBtn" formtarget="_self">Filter</button>
+                </div>
+            </div>
+
             <table class="xsolla-table" id="xsollaTable">
                 <thead>
                     <tr>
-                        <th>#</th> 
+                        <th>#</th>
                         <th>Country</th>
                         <th>User ID</th>
                         <th>Email</th>
                         <th>Project</th>
                         <th>Virtual item</th>
                         <th>Virtual price</th>
-                        <th>Payment price</th> <th>Payment method</th>
+                        <th>Payment price</th>
+                        <th>Payment method</th>
                         <th>Transaction ID</th>
                         <th>Date</th>
                         <th>Subscription</th>
