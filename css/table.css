@@ -43,7 +43,7 @@
     display: inline-block;
 }
 
-@media (min-width: 768px) {
+@media (min-width: 568px) {
     .xsolla-table td:before {
         display: none;
     }
@@ -55,7 +55,7 @@
     margin: 0 auto;
 }
 
-@media (min-width: 768px) {
+@media (min-width: 568px) {
     .xsolla-table th,
     .xsolla-table td {
         display: block;
@@ -64,8 +64,8 @@
         word-wrap: break-word;
         text-align: center;
         box-sizing: border-box;
-        width: 9%;
-        float: left;        
+        width: 9.25%;
+        float: left;
     }
 
     .xsolla-table th:first-child,
@@ -73,7 +73,11 @@
         width: 4%;
     }
     .xsolla-table th:nth-child(2),
-    .xsolla-table td:nth-child(2) {
+    .xsolla-table td:nth-child(2),
+    .xsolla-table th:nth-child(7),
+    .xsolla-table td:nth-child(7),
+    .xsolla-table th:nth-child(8),
+    .xsolla-table td:nth-child(8) {
         width: 6%;
     }
 

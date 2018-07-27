@@ -77,7 +77,7 @@ header img {
 
 
 
-@media (max-width: 768px) {
+@media (max-width: 568px) {
     .container {
       grid-template-areas:
         "header"
@@ -88,8 +88,8 @@ header img {
       grid-template-columns: 1fr;
       grid-template-rows:
         auto /* Header */
-        1fr /* Content */
-        1fr /* Sidebar */
+        1fr /* Aside (graphs) */
+        1fr /* Main (table) */
         auto; /* Footer */
     }
   
