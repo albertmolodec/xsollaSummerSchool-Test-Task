@@ -29,8 +29,10 @@ drawPaymentsDoughnutChart('paymentsDoughnutChart');
 drawPaymentsLineChart('paymentsLineChart');
 
 filterBtn.addEventListener('click', function () {
-    filterableRows = getSuitableRows(columnSelector.value, filterableText.value);
-    updateTable(filterableRows);
+    if (filterableText.value !== '') {
+        filterableRows = getSuitableRows(columnSelector.value, filterableText.value);
+        updateTable(filterableRows);
+    }
 });
 
 function sortColumn(columnNumber, type) {
@@ -135,8 +137,17 @@ function drawPaymentsLineChart(chartId) {
                 backgroundColor: '#ff005b',
                 borderColor: '#ff005b',
                 data: popularPaymentMethods.amounts,
+                showLine: false
             }]
         },
+
+        options: {
+            elements: {
+                point: {
+                    pointStyle: 'rectRounded'
+                }
+            }
+        }
     });    
 }
 
