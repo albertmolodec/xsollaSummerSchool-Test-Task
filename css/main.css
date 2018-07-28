@@ -118,23 +118,29 @@ header img {
     font-weight: bold;
 }
 
-
-
+.charts-wrapper {
+    display: block;
+    width: 85%;
+    height: 85%;
+    padding: 20px;
+    margin: 0 auto;
+    box-sizing: border-box;
+}
 
 
 @media (max-width: 768px) {
     .container {
       grid-template-areas:
         "header"
-        "aside"
-        "main"        
+        "main"
+        "aside"                
         "footer";
   
       grid-template-columns: 1fr;
       grid-template-rows:
         auto /* Header */
-        2fr /* Aside (graphs) */
         3fr /* Main (table) */
+        2fr /* Aside (graphs) */        
         auto; /* Footer */
     }
   

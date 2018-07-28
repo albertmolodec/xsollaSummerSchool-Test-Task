@@ -24,6 +24,10 @@ fillProjects();
 fillFilterColumns();
 var filterableRows;
 
+var popularPaymentMethods = getPopularPaymentMethods();
+drawPaymentsDoughnutChart('paymentsDoughnutChart');
+drawPaymentsLineChart('paymentsLineChart');
+
 filterBtn.addEventListener('click', function () {
     filterableRows = getSuitableRows(columnSelector.value, filterableText.value);
     updateTable(filterableRows);
@@ -78,8 +82,8 @@ function sortColumn(columnNumber, type) {
     }
     xsollaTable.appendChild(tbody);
 
-    
-    
+
+
 
     function removeAllSortClasses() {
         var theadLength = thead.firstElementChild.children.length;
@@ -97,7 +101,44 @@ function sortColumn(columnNumber, type) {
     }
 }
 
+function drawPaymentsDoughnutChart(chartId) {
+    var ctx = document.getElementById(chartId).getContext('2d');
+    var chart = new Chart(ctx, {
+        // The type of chart we want to create
+        type: 'doughnut',
 
+        // The data for our dataset
+        data: {
+            labels: popularPaymentMethods.names,
+            datasets: [{
+                label: "Payment Methods Popularity",
+                backgroundColor: ['#ff6384', '#36a2eb', '#ffcd56', '#00ffcc', '#6600cc', '#36ea7f', '#ea7e36', '#35a32e', '#2e35a3'],
+                data: popularPaymentMethods.amounts,
+            }]
+        },
+
+        options: {
+
+        }
+    });
+}
+
+function drawPaymentsLineChart(chartId) {
+    var ctx = document.getElementById(chartId).getContext('2d');
+    var chart = new Chart(ctx, {
+        type: 'line',
+
+        data: {
+            labels: popularPaymentMethods.names,
+            datasets: [{
+                label: "Payment Methods Popularity",
+                backgroundColor: '#ff005b',
+                borderColor: '#ff005b',
+                data: popularPaymentMethods.amounts,
+            }]
+        },
+    });    
+}
 
 
 
@@ -119,6 +160,24 @@ function getSuitableRows(columnName, filterableText) {
         }
     }
     return suitableRows;
+}
+
+function getPopularPaymentMethods() {
+    var paymentMethodNames = [];
+    var paymentMethodAmounts = [];
+
+    for (var transactionNumber = 0; transactionNumber < tableData.length; transactionNumber++) {
+        var paymentMethodName = tableData[transactionNumber]['Payment method'];
+        var indexInArray = paymentMethodNames.indexOf(paymentMethodName)
+        if (indexInArray === -1) {
+            paymentMethodNames.push(paymentMethodName);
+            paymentMethodAmounts.push(1);
+        } else {
+            paymentMethodAmounts[indexInArray]++;
+        }
+    }
+
+    return { names : paymentMethodNames, amounts : paymentMethodAmounts};
 }
 
 function fillProjects() {
