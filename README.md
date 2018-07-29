@@ -7,9 +7,17 @@
 
 Перейти по ссылке: https://albertmolodec.github.io.
 
-## Что сайт умеет
+## Как выглядит
 
-**ВЕЗДЕ ГИФКИ**
+На десктопе:
+
+<img src="https://ib.bizmrg.com/amicebox/Xsolla%20Transactions/Xsolla%20Transactions%20Desktop.png">
+
+На телефоне:
+
+<img src="https://ib.bizmrg.com/amicebox/Xsolla%20Transactions/Xsolla%20Transactions%20Mobile.png" height="500">
+
+## Что умеет
 
 1. Загружать платежные транзакции из JSON-файла.
 2. Отображать транзакции в виде таблицы.
