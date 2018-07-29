@@ -2,7 +2,7 @@
     min-width: 300px;
     border-collapse: collapse;
     width: 100%;
-    height: 80%;
+    height: 100%;
 }
 
 .table-content thead, 
@@ -14,7 +14,7 @@
 }
 
 .table-content tbody {
-    height: 90%;
+    height: 100%;
     width: 100%;
     overflow-y: auto;
 }
@@ -64,6 +64,10 @@
         box-sizing: border-box;
         width: 9.25%;
         float: left;
+    }
+
+    .table-content tbody {
+        height: 90%;
     }
 
     .table-content th:first-child,

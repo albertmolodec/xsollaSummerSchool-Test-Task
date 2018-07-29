@@ -12,7 +12,7 @@ body {
       "header header" 
       "main aside" 
       "footer footer";
-    grid-template-columns: 2fr 1fr;
+    grid-template-columns: 7fr 3fr;
     grid-template-rows: auto 1fr 50px;
     grid-gap: 10px;
     height: 100vh;
@@ -70,27 +70,29 @@ footer .author a:hover {
     color: white;
 }
 
+
 .table-actions {
-    height: 20%;
+    height: 10%;
     display: flex;
     flex-direction: row;
-    align-items: flex-start;   
+    align-items: space-around;   
     justify-content: flex-start;
 }
 
-.table-actions .projects-list {
+.table-content-wrapper {
+    display: block;
+    width: 100%;
+    height: 90%;
+}
+
+.table-actions .projects {
     display: flex;
     flex-direction: row;
     align-items: center;
     height: 100%;
-    margin: 0;
 }
 
-.table-actions .projects-list > * {
-    margin: 0;
-}
-
-.table-actions #projectsList {
+.table-actions .projects-list {
     display: block;
     height: 90%;
     width: 150px;
@@ -104,23 +106,11 @@ footer .author a:hover {
 }
 
 .table-actions .filter {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;;
     margin-left: 10px;
     height: 100%;
-    padding: 10px;
-    
-}
-
-.table-actions .filter button {
-    width: 100px;
-    height: 30px;
-    border: 0;
-
-    margin: auto 10px;
-    padding: 0;
-  
-    background-color: #ff005b;
-    color: white;
-    font-weight: bold;
 }
 
 .charts-wrapper {
@@ -135,18 +125,18 @@ footer .author a:hover {
 
 @media (max-width: 768px) {
     header .title {
-        font-size: 1.5em;
+        font-size: 1.2em;
     }
     
     .container {
-      grid-template-areas:
+        grid-template-areas:
         "header"
         "main"
         "aside"                
         "footer";
-  
-      grid-template-columns: 1fr;
-      grid-template-rows:
+        
+        grid-template-columns: 1fr;
+        grid-template-rows:
         auto /* Header */
         3fr /* Main (table) */
         2fr /* Aside (graphs) */        
@@ -158,5 +148,24 @@ footer .author a:hover {
     aside,
     footer {
       margin: 0;
+    }
+
+    .table-actions {
+        flex-direction: column;
+        align-items: space-around;
+        height: 200px;
+        padding: 1em; 
+    }
+
+    .table-actions .filter {
+        margin: 0;
+        margin-top: 1em;
+        width: 100%;
+    }
+
+    .table-content-wrapper {
+        height: 800px;
+        width: 80%;
+        margin: 0 auto;
     }
 }

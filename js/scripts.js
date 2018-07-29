@@ -29,11 +29,57 @@ drawPaymentsDoughnutChart('paymentsDoughnutChart');
 drawPaymentsLineChart('paymentsLineChart');
 
 filterBtn.addEventListener('click', function () {
-    if (filterableText.value !== '') {
-        filterableRows = getSuitableRows(columnSelector.value, filterableText.value);
-        updateTable(filterableRows);
-    }
+    filterableRows = getSuitableRows(columnSelector.value, filterableText.value);
+    updateTable(filterableRows);
 });
+
+filterableText.addEventListener('input', function() {
+    filterableRows = getSuitableRows(columnSelector.value, filterableText.value);
+    updateTable(filterableRows);
+});
+
+columnSelector.addEventListener('change', function() {
+    filterableText.value = '';
+    updateTable(filterableRows, false);
+})
+
+
+
+function getSuitableRows(columnName, filterableText) {
+    filterableText = filterableText.toLowerCase();
+    var suitableRows = [];
+
+    if (columnName === '#' && isNumeric(filterableText)) {
+        suitableRows.push(filterableText);
+    } 
+    else if (columnName !== '#'){
+        for (var rowNumber = 0; rowNumber < tableData.length; rowNumber++) {
+            if (tableData[rowNumber][columnName] === null) continue;
+
+            var isInTable = tableData[rowNumber][columnName].toLowerCase().indexOf(filterableText);
+            if (~isInTable) {
+                suitableRows.push(rowNumber);
+            }
+        }
+    }
+    else {
+        suitableRows = getAllRowNumbers();
+    }
+
+    return suitableRows;
+
+    function isNumeric(n) {
+        return !isNaN(parseFloat(n)) && isFinite(n);
+    }
+
+    function getAllRowNumbers() {
+        var rowNumbers = [];
+        for (var i = 0; i < tableData.length; i++) {
+            rowNumbers.push(i);
+        }
+        return rowNumbers;
+    }
+}
 
 function sortColumn(columnNumber, type) {
     var tbody = xsollaTable.tBodies[0];
@@ -154,24 +200,7 @@ function drawPaymentsLineChart(chartId) {
 
 
 
-function getSuitableRows(columnName, filterableText) {
-    filterableText = filterableText.toLowerCase();
-    var suitableRows = [];
 
-    if (columnName === '#') {
-        suitableRows.push(filterableText);
-    } else {
-        for (var rowNumber = 0; rowNumber < tableData.length; rowNumber++) {
-            if (tableData[rowNumber][columnName] === null) continue;
-
-            var isInTable = tableData[rowNumber][columnName].toLowerCase().indexOf(filterableText);
-            if (~isInTable) {
-                suitableRows.push(rowNumber);
-            }
-        }
-    }
-    return suitableRows;
-}
 
 function getPopularPaymentMethods() {
     var paymentMethodNames = [];
@@ -222,12 +251,24 @@ function createTable() {
     }
 }
 
-function updateTable(neededRows) {
+function updateTable(suitableRows) {
+    if (suitableRows.length === 0) {
+        suitableRows = getAllRowNumbers;
+    }
+
+    function getAllRowNumbers() {
+        var rowNumbers = [];
+        for (var i = 0; i < tableData.length; i++) {
+            rowNumbers.push(i);
+        }
+        return rowNumbers;
+    }
+
     xsollaTable.tBodies[0].innerHTML = "";
 
-    for (var rowNumber = 0; rowNumber < neededRows.length; rowNumber++) {
-        addRow(tableData, neededRows[rowNumber]);
-    }
+    suitableRows.forEach(rowNumber => {
+        addRow(tableData, rowNumber);
+    });
 }
 
 function generateTableData(originalData) {

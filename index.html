@@ -20,48 +20,43 @@
 
         <main>
             <div class="table-actions">
-                <div class="projects-list">
+                <div class="projects">
                     <p>Projects:</p>
-                    <ul id="projectsList"></ul>
+                    <ul class="projects-list" id="projectsList"></ul>
                 </div>
-                <table class="filter">
-                    <tbody>
-                        <tr>
-                            <td valign="top"><label for="columnSelector">Choose a column: </label></td>
-                            <td valign="top">
-                                <select id="columnSelector"></select>
-                            </td>
-                            <td rowspan="2" valign="center"><button type="button" id="filterBtn" formtarget="_self">Filter</button></td>
-                        </tr>
-                        <tr>
-                            <td valign="bottom"><label for="filterableText">
-                                Enter some text that has to be contain in the column:<br>
-                                <sub>(or just enter number of a row)</sub></label></td>
-                            <td valign="bottom"><input type="text" id="filterableText"></td>
-                        </tr>
-                    </tbody>
-                </table>
+                <div class="filter">
+                    <div class="filter-column">
+                        <label for="columnSelector">Сolumn for filter: </label>
+                        <select id="columnSelector"></select>
+                    </div>
+                    <div class="filter-text">
+                        <label for="filterableText">Enter some text:  </label>
+                        <input type="text" id="filterableText">
+                    </div>
+                </div>
             </div>
 
-            <table class="table-content" id="xsollaTable">
-                <thead>
-                    <tr>
-                        <th onclick="sortColumn(0, 'number')">#</th>
-                        <th onclick="sortColumn(1, 'string')">Country</th>
-                        <th onclick="sortColumn(2, 'string')">User ID</th>
-                        <th onclick="sortColumn(3, 'string')">Email</th>
-                        <th onclick="sortColumn(4, 'string')">Project</th>
-                        <th onclick="sortColumn(5, 'string')">Virtual item</th>
-                        <th onclick="sortColumn(6, 'number')">Virtual price</th>
-                        <th onclick="sortColumn(7, 'number')">Payment price</th>
-                        <th onclick="sortColumn(8, 'string')">Payment method</th>
-                        <th onclick="sortColumn(9, 'number')">Transaction ID</th>
-                        <th onclick="sortColumn(10, 'date')">Date</th>
-                        <th onclick="sortColumn(11, 'string')">Subscription</th>
-                    </tr>
-                </thead>
-                <tbody></tbody>
-            </table>
+            <div class="table-content-wrapper">
+                <table class="table-content" id="xsollaTable">
+                    <thead>
+                        <tr>
+                            <th onclick="sortColumn(0, 'number')">#</th>
+                            <th onclick="sortColumn(1, 'string')">Country</th>
+                            <th onclick="sortColumn(2, 'string')">User ID</th>
+                            <th onclick="sortColumn(3, 'string')">Email</th>
+                            <th onclick="sortColumn(4, 'string')">Project</th>
+                            <th onclick="sortColumn(5, 'string')">Virtual item</th>
+                            <th onclick="sortColumn(6, 'number')">Virtual price</th>
+                            <th onclick="sortColumn(7, 'number')">Payment price</th>
+                            <th onclick="sortColumn(8, 'string')">Payment method</th>
+                            <th onclick="sortColumn(9, 'number')">Transaction ID</th>
+                            <th onclick="sortColumn(10, 'date')">Date</th>
+                            <th onclick="sortColumn(11, 'string')">Subscription</th>
+                        </tr>
+                    </thead>
+                    <tbody></tbody>
+                </table>
+            </div>            
         </main>
 
         <aside>
@@ -77,6 +72,7 @@
             </div>
         </footer>
     </div>
+    
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.4.0/Chart.min.js"></script>
     <script type="text/javascript" src="data.json"></script>
     <script src="js/scripts.js"></script>
