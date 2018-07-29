@@ -20,18 +20,13 @@ var tableData = generateTableData(originalData);
 
 createTable();
 
-fillProjects();
+fillProjectsList();
 fillFilterColumns();
 var filterableRows;
 
 var popularPaymentMethods = getPopularPaymentMethods();
 drawPaymentsDoughnutChart('paymentsDoughnutChart');
 drawPaymentsLineChart('paymentsLineChart');
-
-filterBtn.addEventListener('click', function () {
-    filterableRows = getSuitableRows(columnSelector.value, filterableText.value);
-    updateTable(filterableRows);
-});
 
 filterableText.addEventListener('input', function() {
     filterableRows = getSuitableRows(columnSelector.value, filterableText.value);
@@ -220,7 +215,7 @@ function getPopularPaymentMethods() {
     return { names : paymentMethodNames, amounts : paymentMethodAmounts};
 }
 
-function fillProjects() {
+function fillProjectsList() {
     var uniqueProjects = [];
 
     for (var rowNumber = 0; rowNumber < tableData.length; rowNumber++) {
