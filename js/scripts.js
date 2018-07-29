@@ -18,21 +18,21 @@ var tableColumns = [
 loadOriginalData();
 var tableData = generateTableData(originalData);
 
+
+
 createTable();
 
 fillProjectsList();
 fillFilterColumns();
-var filterableRows;
 
 var popularPaymentMethods = getPopularPaymentMethods();
 drawPaymentsDoughnutChart('paymentsDoughnutChart');
 drawPaymentsLineChart('paymentsLineChart');
 
-
+var filterableRows;
 filterableText.addEventListener('input', function() {
     updateTable();
 });
-
 columnSelector.addEventListener('change', function() {
     filterableText.value = '';
     updateTable();
