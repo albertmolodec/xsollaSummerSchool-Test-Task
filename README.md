@@ -5,7 +5,10 @@
 
 ## Как запустить
 
-Перейти по ссылке: https://albertmolodec.github.io.
+```
+1. git clone
+2. Открыть index.html
+```
 
 Использовать браузеры:
 * Chrome версии 66 и выше
