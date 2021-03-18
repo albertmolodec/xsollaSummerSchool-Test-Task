@@ -1,4 +1,9 @@
 # Таблица транзакций
+
+:warning: Проект перемещен в монорепозиторий для моих демо-проектов: https://github.com/albertmolodec/demos/tree/source/src/xsolla-summer-school.
+
+---
+
 Тестовое задание Frontend-потока на [Xsolla Summer School 2018](http://school.xsolla.com).
 
 Автор: Альберт Абдульманов.
